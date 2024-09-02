@@ -1,0 +1,40 @@
+# Ignorar pastas de build e cache
+build/
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Ignorar logs
+*.log
+
+# Ignorar arquivos de configuração temporários
+*.bak
+*.swp
+
+# Ignorar pastas do NetBeans
+**/nbproject/private/
+**/nbproject/Makefile-impl.mk
+**/nbproject/Package-impl.xml
+**/nbproject/genfiles.properties
+**/nbproject/project.properties
+**/nbproject/project.xml
+
+# Ignorar arquivos do Maven (se aplicável)
+target/
+
+# Ignorar pastas do IDE
+/.idea/
+/.vscode/
+
+# Ignorar binários gerados
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db

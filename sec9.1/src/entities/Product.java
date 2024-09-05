@@ -10,8 +10,6 @@ public class Product {
     public Product() {
     }
 
-    ;
-
     public Product(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
@@ -30,10 +28,6 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     // GETTERS: 

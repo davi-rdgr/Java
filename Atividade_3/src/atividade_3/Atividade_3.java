@@ -136,7 +136,7 @@ public class Atividade_3 {
             } while (tipo != 1 && tipo != 2);
 
         }
-        
+
         int menuContinuar;
         do {
             System.out.println(" ------------------------------------------------------- \n");

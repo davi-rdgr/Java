@@ -40,7 +40,7 @@ public class Sec104 {
         for (double abc : nums) {
             val = val + abc;
         }
-        System.out.println(val);
+
         med = val / n;
         System.out.println(med);
     }

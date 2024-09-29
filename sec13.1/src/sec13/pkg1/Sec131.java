@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package sec13.pkg1;
 
-/**
- *
- * @author PC
- */
+import entities.Order;
+import entities.enuns.OrderStatus;
+import java.util.Date;
+
 public class Sec131 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Order order = new Order(1080, new Date(), OrderStatus.PENDING_PAYMENT);
+        
+        System.out.println(order.toString());
+        
+        OrderStatus os1 = OrderStatus.DELIVERED;
+        
+        OrderStatus os2 = OrderStatus.valueOf("DELIVERED");
+        
+        System.out.println(os1);
+        System.out.println(os2);
     }
-    
+
 }

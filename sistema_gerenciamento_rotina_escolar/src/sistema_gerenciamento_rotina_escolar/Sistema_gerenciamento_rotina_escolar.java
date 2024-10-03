@@ -13,14 +13,12 @@ import entities.Professor;
 import entities.SalaAula;
 import entities.Turma;
 
+
 public class Sistema_gerenciamento_rotina_escolar {
 
     public static void main(String[] args) {
 
-        
         // Protótipo das funcionalidades:
-        
-        
         SalaAula sala1 = new SalaAula(1, 101);
         System.out.println("Sala: " + sala1.getId() + " - Número: " + sala1.getNumero());
 
@@ -55,6 +53,7 @@ public class Sistema_gerenciamento_rotina_escolar {
         System.out.println("Mensagem enviada para o Aluno: " + mensagemAluno1.getAluno().getNome() + " - Mensagem: " + mensagemAluno1.getMensagem().getConteudo());
 
         Frequencia frequencia1 = new Frequencia(1, "2024-09-30 08:00", true, horarioAula1, aluno1, disciplina1);
-        System.out.println("Frequência do Aluno: " + frequencia1.getAluno().getNome() + " - Disciplina: " + frequencia1.getDisciplina().getNome() + " - Presente: " + (frequencia1.isPresente() ? "Sim" : "Não"));
+        System.out.println("Frequência do Aluno: " + frequencia1.getAluno().getNome() + " - Disciplina: " + frequencia1.getDisciplina().getNome() + " - Presente: " + (frequencia1.estaPresente() ? "Sim" : "Não"));
+
     }
 }

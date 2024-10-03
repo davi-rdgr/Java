@@ -28,7 +28,7 @@ public class Frequencia {
         return data;
     }
 
-    public boolean isPresente() {
+    public boolean estaPresente() {
         return presente;
     }
 

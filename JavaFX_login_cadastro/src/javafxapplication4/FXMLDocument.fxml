@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="329.0" style="-fx-background-color: #1f1f1f;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="329.0" style="-fx-background-color: #1f1f1f;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.FXMLLoginController">
     <children>
         <Button fx:id="button" layoutX="205.0" layoutY="204.0" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ffffff;" text="Cadastrar!">
             <font>
@@ -27,6 +27,6 @@
         <TextField fx:id="inputname" layoutX="28.0" layoutY="81.0" />
         <TextField fx:id="inputemail" layoutX="28.0" layoutY="146.0" />
       <Label fx:id="foreachLabel" layoutX="198.0" layoutY="57.0" prefHeight="143.0" prefWidth="116.0" />
-      <Button layoutX="227.0" layoutY="171.0" mnemonicParsing="false" onAction="#forEachAction" text="Button" />
+      <Button layoutX="227.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchScene2" text="Login" />
     </children>
 </AnchorPane>

@@ -30,6 +30,7 @@ public class FXMLDocumentController implements Initializable {
 
     ArrayList<Cliente> AC = new ArrayList<>();
 
+    @FXML
     private boolean emailExists(String email) {
         for (Cliente cliente : AC) {
             if (cliente.getEmail().equals(email)) {
@@ -46,13 +47,17 @@ public class FXMLDocumentController implements Initializable {
         String iptEmail = inputemail.getText();
         String iptPass = inputpassword.getText();
 
-        if (!emailExists(iptEmail)) {
-            Cliente cliente = new Cliente(iptName, iptEmail, iptPass);
-            AC.add(cliente);
-            label.setText("Cadastro bem sucedido!");
-
+        if (iptName.isEmpty() || iptEmail.isEmpty() || iptPass.isEmpty()) {
+            label.setText("Insira valores válidos");
         } else {
-            label.setText("Email já cadastrado!");
+            if (!emailExists(iptEmail)) {
+                Cliente cliente = new Cliente(iptName, iptEmail, iptPass);
+                AC.add(cliente);
+                label.setText("Cadastro bem sucedido!");
+
+            } else {
+                label.setText("Email já cadastrado!");
+            }
         }
     }
 

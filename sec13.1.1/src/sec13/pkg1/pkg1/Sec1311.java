@@ -7,22 +7,17 @@ import entities.SavingsAccount;
 public class Sec1311 {
 
     public static void main(String[] args) {
-        Account acc = new Account(1001, "Alex", 0.0);
-        BusinessAcount bacc = new BusinessAcount(1002, "Maria", 0.0, 500.00);
+
+        Account x = new Account(1020, "Alex", 1000.0);
+        Account y = new SavingsAccount(1023, "Maria", 1000.0, 0.01);
+
+        x.whitDraw(50.0);
+        y.whitDraw(50.0);
         
-        // Upcasting:
-        
-        Account acc1 = bacc;
-        acc1.getBalance();
-        
-        Account acc2 = new BusinessAcount(1003, "bob", 0.0, 200.0);
-        Account acc3 = new SavingsAccount(1004, "Anna", 0.0, 0.01);
-        
-        
-        // Downcasting:
-        
-        BusinessAcount acc4 = (BusinessAcount)acc2;
-        acc4.Loan(100.0);
+        System.out.println(x.getBalance());
+        System.out.println(y.getBalance());
+                
+                
     }
 
 }

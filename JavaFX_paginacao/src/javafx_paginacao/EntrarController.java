@@ -1,8 +1,12 @@
 package javafx_paginacao;
 
 import entities.Cliente;
+
+import javafx_paginacao.InicialController;
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import utilities.EntrarDAO;
+import utilities.IsAdminDAO;
 
 public class EntrarController implements Initializable {
 
@@ -36,12 +41,17 @@ public class EntrarController implements Initializable {
     private Label label;
 
     @FXML
-    public void handleButtonEnter(ActionEvent event) {
+    public void handleButtonEnter(ActionEvent event) throws SQLException {
         String iptEmail = inputemail.getText();
         String iptPass = inputpassword.getText();
 
         EntrarDAO entrardao = new EntrarDAO();
+        IsAdminDAO isadmindao = new IsAdminDAO();
+
         boolean loginValid = entrardao.loginVerify(iptEmail, iptPass);
+        boolean status = isadmindao.UserIsAdmin(iptEmail);
+
+        System.out.println(status);
 
         if (iptEmail.isEmpty() || iptPass.isEmpty()) {
             label.setText("Insira valores válidos!");
@@ -52,9 +62,11 @@ public class EntrarController implements Initializable {
                 label.setText("Login bem-sucedido");
 
                 try {
-                    
+
                     // Carregar o novo arquivo FXML
-                    Parent root = FXMLLoader.load(getClass().getResource("Inicial.fxml"));
+                    //Parent root = FXMLLoader.load(getClass().getResource("Inicial.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Inicial.fxml"));
+                    Parent root = loader.load();
 
                     // Obter a janela (Stage) atual
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,6 +74,9 @@ public class EntrarController implements Initializable {
                     // Definir a nova cena
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
+
+                    InicialController inicialcontroller = loader.getController();
+                    inicialcontroller.setStatus(status);
 
                     // Exibir a nova tela
                     stage.show();

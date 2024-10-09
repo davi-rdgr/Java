@@ -1,6 +1,8 @@
 package javafx_paginacao;
 
 import utilities.ClienteDAO;
+import utilities.IsAdminDAO;
+
 import entities.Cliente;
 import java.io.IOException;
 import java.net.URL;
@@ -12,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.control.MenuItem;
@@ -23,14 +26,31 @@ public class InicialController implements Initializable {
     private ListView<Cliente> listViewClientes;  // ListView no FXML
     private ClienteDAO clienteDAO = new ClienteDAO();
 
+    @FXML
+    private Button barButton;
+    private boolean status;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<Cliente> clientesList = clienteDAO.getAllClientes();
         listViewClientes.setItems(clientesList);  // Vincula a lista ao ListView
+
+    }
+
+    // recebendo o status de admin ou não vindo do EntrarController
+    public void setStatus(boolean status) {
+        this.status = status;
+        System.out.println("Status recebido: " + status);
+
+        if (status) {
+            barButton.setVisible(status);
+        } else {
+            barButton.setVisible(status);
+        }
     }
 
     @FXML
-    private MenuItem menuItemLogout;  // Supondo que você tem um MenuItem para logout
+    private MenuItem menuItemLogout;
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
@@ -54,4 +74,5 @@ public class InicialController implements Initializable {
 
         System.out.println("Logout feito");
     }
+
 }

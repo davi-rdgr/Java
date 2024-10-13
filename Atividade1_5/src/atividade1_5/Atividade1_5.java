@@ -6,10 +6,8 @@ public class Atividade1_5 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
         boolean[][] quartos = new boolean[4][3];
         String continuar = "S";
-
         do {
             System.out.println("Informe o andar (1-4): ");
             int andar = scanner.nextInt();

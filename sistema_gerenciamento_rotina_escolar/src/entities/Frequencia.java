@@ -2,7 +2,6 @@ package entities;
 
 public class Frequencia {
 
-    private int id;
     private String data;
     private boolean presente;
     private HorarioAula horarioAula;
@@ -10,8 +9,7 @@ public class Frequencia {
     private Disciplina disciplina;
 
     // construtor
-    public Frequencia(int id, String data, boolean presente, HorarioAula horarioAula, Aluno aluno, Disciplina disciplina) {
-        this.id = id;
+    public Frequencia(String data, boolean presente, HorarioAula horarioAula, Aluno aluno, Disciplina disciplina) {
         this.data = data;
         this.presente = presente;
         this.horarioAula = horarioAula;
@@ -20,9 +18,6 @@ public class Frequencia {
     }
 
     // getters
-    public int getId() {
-        return id;
-    }
 
     public String getData() {
         return data;
@@ -44,10 +39,6 @@ public class Frequencia {
         return disciplina;
     }
     // setters
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setData(String data) {
         this.data = data;

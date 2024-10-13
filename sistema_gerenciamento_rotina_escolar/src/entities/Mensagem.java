@@ -2,23 +2,18 @@ package entities;
 
 public class Mensagem {
 
-    private int id;
     private Diretoria remetente;
     private String conteudo;
     private String dataEnvio;
 
     // construtor
-    public Mensagem(int id, Diretoria remetente, String conteudo, String dataEnvio) {
-        this.id = id;
+    public Mensagem(Diretoria remetente, String conteudo, String dataEnvio) {
         this.remetente = remetente;
         this.conteudo = conteudo;
         this.dataEnvio = dataEnvio;
     }
 
     // getters
-    public int getId() {
-        return id;
-    }
 
     public Diretoria getRemetente() {
         return remetente;
@@ -33,9 +28,6 @@ public class Mensagem {
     }
 
     // setters
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setRemetente(Diretoria remetente) {
         this.remetente = remetente;

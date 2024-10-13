@@ -2,23 +2,18 @@ package entities;
 
 public class AlunoNota {
 
-    private int id;
     private Aluno aluno;
     private Nota nota;
     private Disciplina disciplina;
 
     // construtor
-    public AlunoNota(int id, Aluno aluno, Nota nota, Disciplina disciplina) {
-        this.id = id;
+    public AlunoNota(Aluno aluno, Nota nota, Disciplina disciplina) {
         this.aluno = aluno;
         this.nota = nota;
         this.disciplina = disciplina;
     }
 
     // getters
-    public int getId() {
-        return id;
-    }
 
     public Aluno getAluno() {
         return aluno;
@@ -33,9 +28,6 @@ public class AlunoNota {
     }
 
     // setters
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;

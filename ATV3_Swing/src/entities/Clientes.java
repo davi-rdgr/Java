@@ -80,4 +80,16 @@ public class Clientes {
     public void setReceita(String receita) {
         this.receita = receita;
     }
+
+    public String toString() {
+        return "Clientes{"
+                + "nome='" + nome + '\''
+                + ", telefone='" + telefone + '\''
+                + ", CPF='" + CPF + '\''
+                + ", data=" + data
+                + ", paciente=" + paciente
+                + ", consulta=" + consulta
+                + ", receita='" + receita + '\''
+                + '}';
+    }
 }

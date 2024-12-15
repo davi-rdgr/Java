@@ -24,13 +24,11 @@ public class Atividade_4 {
             this.credito = credito;
         }
 
-        // calcula o imposto PIS baseado na diferença entre débito e crédito multiplicada pela alíquota
         @Override
         public double calcularImposto() {
             return (debito - credito) * 0.0165;
         }
 
-        // retorna a descrição do imposto
         @Override
         public String getDescricao() {
             return "PIS";
@@ -54,14 +52,12 @@ public class Atividade_4 {
             this.aliquota = aliquota;
         }
 
-        // calcula o imposto IPI baseado na soma do valor do produto, frete, seguro e outras despesas, multiplicada pela aliquota
         @Override
         public double calcularImposto() {
             double baseCalculo = valorProduto + frete + seguro + outrasDespesas;
             return baseCalculo * (aliquota / 100);
         }
 
-        // retorna a descrição do imposto
         @Override
         public String getDescricao() {
             return "IPI";
@@ -79,12 +75,10 @@ public class Atividade_4 {
             this.impostos = new ArrayList<>();
         }
 
-        // adiciona um imposto à lista de impostos do pagamento
         public void adicionarImposto(Imposto imposto) {
             impostos.add(imposto);
         }
 
-        // exibe o resumo dos impostos cadastrados, mostrando a descrição e o valor calculado para cada 
         public void mostrarResumo() {
             for (Imposto imposto : impostos) {
                 System.out.println(imposto.getDescricao() + ": R$ " + imposto.calcularImposto());
@@ -103,26 +97,21 @@ public class Atividade_4 {
             System.out.println("Informe o tipo de imposto (PIS, IPI) ou 'pare' para sair:");
             String tipoImposto = scanner.nextLine();
 
-            // verifica se o usuário deseja parar o cadastro de impostos
             if (tipoImposto.equalsIgnoreCase("pare")) {
                 break;
             }
 
-            // dependendo do tipo de imposto informado, solicita os dados necessários e calcula o imposto
             switch (tipoImposto.toUpperCase()) {
                 case "PIS" -> {
-                    // captura o valor do débito e crédito
                     System.out.println("Informe o valor de débito:");
                     double debito = scanner.nextDouble();
                     System.out.println("Informe o valor de crédito:");
                     double credito = scanner.nextDouble();
                     scanner.nextLine();
-                    // Adiciona o imposto PIS na lista de impostos do pagamento
                     pagamento.adicionarImposto(new PIS(debito, credito));
                 }
 
                 case "IPI" -> {
-                    // captura o valor do produto, frete, seguro, despesas e aliquota
                     System.out.println("Informe o valor do produto:");
                     double valorProduto = scanner.nextDouble();
                     System.out.println("Informe o valor do frete:");
@@ -134,17 +123,14 @@ public class Atividade_4 {
                     System.out.println("Informe a alíquota:");
                     double aliquota = scanner.nextDouble();
                     scanner.nextLine();
-                    // adiciona o imposto IPI na lista de impostos do pagamento
                     pagamento.adicionarImposto(new IPI(valorProduto, frete, seguro, outrasDespesas, aliquota));
                 }
 
-                // tratamento caso o usuário insira um tipo de imposto inválido
                 default ->
                     System.out.println("Tipo de imposto inválido!");
             }
         }
 
-        // mostra o resumo dos impostos cadastrados, com descrição e o valor calculado para cada um
         System.out.println("Resumo dos impostos:");
         pagamento.mostrarResumo();
 

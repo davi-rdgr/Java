@@ -1,27 +1,27 @@
-package Main;
+package uc9_3;
 
-import entities.Clientes;
+import entidades.Pacientes;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Main_2 extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
-    public Main_2() {
+    public Main() {
         initComponents();
-        carregarTabela();
+        carregar();
     }
 
-    private ArrayList<Clientes> cadastro = new ArrayList<>(); //AQUI PEGAMOS O ARRAY QUE VEM DA CLASSE DE CADASTRO
+    private ArrayList<Pacientes> pacientes = new ArrayList<>();
 
-    public void carregarTabela() { //CARREGANDO O A TABELA JA COM O ARRAY
+    public void carregar() {
         DefaultTableModel modelo = (DefaultTableModel) main_table.getModel();
         modelo.setRowCount(0);
 
-        for (Clientes cliente : cadastro) {
+        for (Pacientes cliente : pacientes) {
             modelo.addRow(new Object[]{
                 cliente.getNome(),
-                cliente.getCPF(),
+                cliente.getCpf(),
                 cliente.getTelefone(),
                 cliente.getData(),
                 cliente.getPaciente(),
@@ -37,9 +37,9 @@ public class Main_2 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        main_novaconsulta = new javax.swing.JButton();
-        main_excluirconsulta = new javax.swing.JButton();
-        main_finalizarconsulta = new javax.swing.JButton();
+        novaconsulta_main = new javax.swing.JButton();
+        excluirconsulta_main = new javax.swing.JButton();
+        finalizarconsulta_main = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         main_table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -57,24 +57,27 @@ public class Main_2 extends javax.swing.JFrame {
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
-        main_novaconsulta.setText("Nova Consulta");
-        main_novaconsulta.addActionListener(new java.awt.event.ActionListener() {
+        novaconsulta_main.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        novaconsulta_main.setText("Nova Consulta");
+        novaconsulta_main.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                main_novaconsultaActionPerformed(evt);
+                novaconsulta_mainActionPerformed(evt);
             }
         });
 
-        main_excluirconsulta.setText("Excluir Consulta");
-        main_excluirconsulta.addActionListener(new java.awt.event.ActionListener() {
+        excluirconsulta_main.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        excluirconsulta_main.setText("Excluir Consulta");
+        excluirconsulta_main.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                main_excluirconsultaActionPerformed(evt);
+                excluirconsulta_mainActionPerformed(evt);
             }
         });
 
-        main_finalizarconsulta.setText("Finalizar Consulta");
-        main_finalizarconsulta.addActionListener(new java.awt.event.ActionListener() {
+        finalizarconsulta_main.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        finalizarconsulta_main.setText("Finalizar Consulta");
+        finalizarconsulta_main.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                main_finalizarconsultaActionPerformed(evt);
+                finalizarconsulta_mainActionPerformed(evt);
             }
         });
 
@@ -84,21 +87,21 @@ public class Main_2 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(main_novaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(main_excluirconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(main_finalizarconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(novaconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(excluirconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(finalizarconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(main_novaconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(main_excluirconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(main_finalizarconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(novaconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excluirconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(finalizarconsulta_main, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -139,8 +142,10 @@ public class Main_2 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,9 +155,9 @@ public class Main_2 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -175,31 +180,31 @@ public class Main_2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void main_novaconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_main_novaconsultaActionPerformed
+    private void novaconsulta_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaconsulta_mainActionPerformed
         // TODO add your handling code here:
-        CadastrarConsulta CC = new CadastrarConsulta(cadastro);
+        Cadastrar CC = new Cadastrar(pacientes);
         CC.setVisible(true);
         CC.setLocationRelativeTo(this);
 
         CC.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosed(java.awt.event.WindowEvent e) {
-                carregarTabela();
+                carregar();
             }
         });
-    }//GEN-LAST:event_main_novaconsultaActionPerformed
+    }//GEN-LAST:event_novaconsulta_mainActionPerformed
 
-    private void main_excluirconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_main_excluirconsultaActionPerformed
-        int posAluno = main_table.getSelectedRow();
+    private void excluirconsulta_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirconsulta_mainActionPerformed
+        int porPaciente = main_table.getSelectedRow();
 
-        if (posAluno == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um paciente");
+        if (porPaciente == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione o paciente");
         } else {
             String[] options = {"Sim", "Não"};
             int deletar = JOptionPane.showOptionDialog(
                     rootPane,
-                    "Tem certeza que deseja excluir?",
-                    "Exclusão de paciente",
+                    "Deseja excluir?",
+                    "Paciente excluído",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
@@ -208,34 +213,33 @@ public class Main_2 extends javax.swing.JFrame {
             );
             if (deletar == 0) {
                 DefaultTableModel modelo = (DefaultTableModel) main_table.getModel();
-                modelo.removeRow(posAluno);
+                modelo.removeRow(porPaciente);
 
-                cadastro.remove(posAluno);
+                pacientes.remove(porPaciente);
 
                 JOptionPane.showMessageDialog(rootPane, "Paciente excluído com sucesso!");
             }
         }
-    }//GEN-LAST:event_main_excluirconsultaActionPerformed
+    }//GEN-LAST:event_excluirconsulta_mainActionPerformed
 
-
-    private void main_finalizarconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_main_finalizarconsultaActionPerformed
+    private void finalizarconsulta_mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarconsulta_mainActionPerformed
         // TODO add your handling code here:
 
-        int cpfindx = main_table.getSelectedRow();
+        int cpfsearch = main_table.getSelectedRow();
 
-        if (cadastro.get(cpfindx).getConsulta() == true) {
-            JOptionPane.showMessageDialog(rootPane, "Consulta já realizada!");
+        if (pacientes.get(cpfsearch).getConsulta() == true) {
+            JOptionPane.showMessageDialog(rootPane, "A consulta já foi realizada!");
         } else {
-            if (cpfindx == -1) {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um cliente para visualizar os detalhes.");
+            if (cpfsearch == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um paciente para visualizar os detalhes.");
             } else {
-                String propCpf = cadastro.get(cpfindx).getCPF();
-                DetalhesConsulta DC = new DetalhesConsulta(cadastro, propCpf, this);
+                String propCpf = pacientes.get(cpfsearch).getCpf();
+                Detalhes DC = new Detalhes(pacientes, propCpf, this);
                 DC.setVisible(true);
                 DC.setLocationRelativeTo(this);
             }
         }
-    }//GEN-LAST:event_main_finalizarconsultaActionPerformed
+    }//GEN-LAST:event_finalizarconsulta_mainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,45 +255,36 @@ public class Main_2 extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main_2.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main_2.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main_2.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main_2.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main_2().setVisible(true);
-
+                new Main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton excluirconsulta_main;
+    private javax.swing.JButton finalizarconsulta_main;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton main_excluirconsulta;
-    private javax.swing.JButton main_finalizarconsulta;
-    private javax.swing.JButton main_novaconsulta;
     private javax.swing.JTable main_table;
+    private javax.swing.JButton novaconsulta_main;
     // End of variables declaration//GEN-END:variables
 }

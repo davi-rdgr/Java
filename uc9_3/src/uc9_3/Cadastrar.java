@@ -1,18 +1,18 @@
-package Main;
+package uc9_3;
 
-import entities.Clientes;
+import entidades.Pacientes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-public class CadastrarConsulta extends javax.swing.JFrame {
+public class Cadastrar extends javax.swing.JFrame {
 
-    private ArrayList<Clientes> cadastro;
+    private ArrayList<Pacientes> pacientes;
 
-    public CadastrarConsulta(ArrayList<Clientes> cadastro) { //AQUI ATUALIZAMOS TEU CONSTRUTOR PARA RECEBER O ARRAYLIST COM OS CLIENTES/PACIENTES
-        this.cadastro = cadastro;
+    public Cadastrar(ArrayList<Pacientes> cadastro) {
+        this.pacientes = cadastro;
         initComponents();
     }
 
@@ -36,7 +36,7 @@ public class CadastrarConsulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Cadastrar Consulta");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -51,6 +51,7 @@ public class CadastrarConsulta extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("Data da Consulta:");
 
+        cadastrarconsulta_cadastrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cadastrarconsulta_cadastrar.setText("Cadastrar");
         cadastrarconsulta_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,8 +59,18 @@ public class CadastrarConsulta extends javax.swing.JFrame {
             }
         });
 
+        cadastrarconsulta_paciente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cadastrarconsulta_paciente.setText("Já é paciente");
 
+        cadastrarconsulta_telefone.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cadastrarconsulta_nome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cadastrarconsulta_cpf.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cadastrarconsulta_dataconsulta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        cadastrarconsulta_voltar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cadastrarconsulta_voltar.setText("Voltar");
         cadastrarconsulta_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,32 +85,31 @@ public class CadastrarConsulta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(cadastrarconsulta_paciente)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cadastrarconsulta_cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                            .addComponent(cadastrarconsulta_telefone)
-                                            .addComponent(cadastrarconsulta_dataconsulta, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cadastrarconsulta_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cadastrarconsulta_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cadastrarconsulta_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cadastrarconsulta_paciente)
+                                .addComponent(cadastrarconsulta_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cadastrarconsulta_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cadastrarconsulta_cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                        .addComponent(cadastrarconsulta_telefone)
+                                        .addComponent(cadastrarconsulta_dataconsulta, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cadastrarconsulta_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,16 +149,11 @@ public class CadastrarConsulta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cadastrarconsulta_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarconsulta_voltarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_cadastrarconsulta_voltarActionPerformed
 
     private void cadastrarconsulta_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarconsulta_cadastrarActionPerformed
 
@@ -187,12 +192,16 @@ public class CadastrarConsulta extends javax.swing.JFrame {
             return;
         }
 
-        Clientes cliente = new Clientes(cadnome, cadtelefone, cadcpf, cadconsulta, cadBoolean);
-        cadastro.add(cliente);
+        Pacientes cliente = new Pacientes(cadnome, cadtelefone, cadcpf, cadconsulta, cadBoolean);
+        pacientes.add(cliente);
         this.dispose();
 
-
     }//GEN-LAST:event_cadastrarconsulta_cadastrarActionPerformed
+
+    private void cadastrarconsulta_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarconsulta_voltarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_cadastrarconsulta_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,22 +220,23 @@ public class CadastrarConsulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ArrayList<Clientes> cadastro = new ArrayList<>();
+                ArrayList<Pacientes> pacientes = new ArrayList<>();
 
-                new CadastrarConsulta(cadastro).setVisible(true); //INSTÂCIA PASSANDO O ARRAY NO CONTRUTOR
+                new Cadastrar(pacientes).setVisible(true);
             }
         });
     }

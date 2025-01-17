@@ -31,7 +31,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTextField1" min="-2" pref="74" max="-2" attributes="0"/>
-              <EmptySpace pref="281" max="32767" attributes="0"/>
+              <EmptySpace pref="256" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

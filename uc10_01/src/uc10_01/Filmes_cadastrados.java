@@ -216,8 +216,9 @@ public class Filmes_cadastrados extends javax.swing.JFrame {
      */
     private void fc_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fc_atualizarActionPerformed
         Integer index_filme = filmes_table.getSelectedRow();
+        Integer id_line = (Integer) filmes_table.getValueAt(index_filme, 0);
 
-        Atualizar at = new Atualizar(index_filme, this);
+        Atualizar at = new Atualizar(id_line, this);
         at.setVisible(true);
         at.setLocationRelativeTo(this);
     }//GEN-LAST:event_fc_atualizarActionPerformed
@@ -229,7 +230,9 @@ public class Filmes_cadastrados extends javax.swing.JFrame {
      */
     private void fc_deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fc_deletarActionPerformed
         Integer index_filme = filmes_table.getSelectedRow();
-        Deletar dl = new Deletar(index_filme, this);
+        Integer id_line = (Integer) filmes_table.getValueAt(index_filme, 0);
+
+        Deletar dl = new Deletar(id_line, this);
         dl.setVisible(true);
         dl.setLocationRelativeTo(this);
     }//GEN-LAST:event_fc_deletarActionPerformed

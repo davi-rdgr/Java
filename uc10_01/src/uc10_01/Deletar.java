@@ -35,9 +35,15 @@ public class Deletar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Filme não selecionado!");
             return;
         }
-        this.index = index + 1;
+        this.index = index;
         this.main = main;
         this.conn = DBConnectionDAO.getConnection();
+        if (this.conn != null) {
+            System.out.println("Conexão efetuada");
+        } else {
+            System.out.println("Conexão não efetuada.");
+        }
+
         initComponents();
         enunciado();
     }
@@ -145,8 +151,6 @@ public class Deletar extends javax.swing.JFrame {
             stmt.setInt(1, index);
             stmt.executeUpdate();
 
-            reorganizarTabela();
-
             main.carregarTabela();
             this.dispose();
         } catch (SQLException ex) {
@@ -176,35 +180,6 @@ public class Deletar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro ao conectar ao banco de dados");
         }
         delete_enunciado.setText("id " + id + ": Deseja excluir o filme " + nome + "?");
-    }
-
-    /**
-     * método chamado a cada nova inserção ou delete de filmes do banco. Ele
-     * reorganiza o id dos filmes para ordem crescente obrigatoriamente,
-     * extremamente necessário para o funcionamento do uso do índice da JTable
-     * para comparação com o banco, pois a JTable reconhece os itens em ordem
-     * crescente e atualizada, já o banco sem esse método, não.
-     */
-    public void reorganizarTabela() {
-        String selectSQL = "SELECT id FROM filmes ORDER BY id";
-        String updateSQL = "UPDATE filmes SET id = ? WHERE id = ?";
-
-        try (PreparedStatement selectStmt = conn.prepareStatement(selectSQL); ResultSet rs = selectStmt.executeQuery(); PreparedStatement updateStmt = conn.prepareStatement(updateSQL)) {
-            int newId = 1;
-            while (rs.next()) {
-                int currentId = rs.getInt("id");
-                if (currentId != newId) {
-                    updateStmt.setInt(1, newId);
-                    updateStmt.setInt(2, currentId);
-                    updateStmt.executeUpdate();
-                }
-                newId++;
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao conectar ao banco de dados");
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Erro aqui" + ex.getMessage());
-        }
     }
 
     /**

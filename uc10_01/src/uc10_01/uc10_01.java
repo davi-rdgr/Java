@@ -246,8 +246,6 @@ public class uc10_01 extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao conectar ao banco");
             }
-            Deletar del = new Deletar();
-            del.reorganizarTabela();
 
         }
 

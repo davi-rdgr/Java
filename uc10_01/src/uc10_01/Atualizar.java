@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import uc10_01.utilities.DBConnectionDAO;
 
 /**
@@ -21,12 +22,19 @@ public class Atualizar extends javax.swing.JFrame {
      * Construtor iniciando os componentes e verificando se há conexão com o
      * banco.
      *
+     * é executado um teste para saber se o índice foi selecionado. Caso não
+     * (indice -1), retorna um aviso e não executa o restante do construtor.
+     *
      * @param index é o valor da getSelectedRow() recebida para saber qual o
      * índice do filme para ser atualizado.
      * @param main é a classe Filmes_cadastrados, instanciada para poder usar
      * seus métodos.
      */
     public Atualizar(Integer index, Filmes_cadastrados main) {
+        if (index == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Filme não selecionado!");
+            return;
+        }
         this.index = index;
         this.conn = DBConnectionDAO.getConnection();
         this.main = main;
@@ -225,7 +233,7 @@ public class Atualizar extends javax.swing.JFrame {
             main.carregarTabela();
             this.dispose();
         } catch (SQLException ex) {
-            System.out.println("num deu");
+            ex.printStackTrace();
         }
 
 

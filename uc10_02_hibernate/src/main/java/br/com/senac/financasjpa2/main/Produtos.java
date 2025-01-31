@@ -1,5 +1,8 @@
-package br.com.senac.financasjpa2.persistencia;
+package br.com.senac.financasjpa2.main;
 
+import br.com.senac.financasjpa2.persistencia.DeletarDAO;
+import br.com.senac.financasjpa2.main.Main;
+import br.com.senac.financasjpa2.main.Cadastrar;
 import br.com.senac.financasjpa2.entities.Podcast;
 import br.com.senac.financasjpa2.entities.User;
 import jakarta.persistence.EntityManager;
@@ -19,6 +22,12 @@ public class Produtos extends javax.swing.JFrame {
         iniciarTabela();
     }
 
+    /**
+     * Construtor para receber a classe User e o EneityManager
+     *
+     * @param user recebe a classe entidade User
+     * @param em recebe o Entity Manager
+     */
     public Produtos(User user, EntityManager em) {
         this.user = user;
         this.em = em;
@@ -188,6 +197,10 @@ public class Produtos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método para iniciar a mensagem de boas vindas da tela principal pós login
+     * e gerenciando as permissões por usuário
+     */
     private void inicializar_user() {
         JOptionPane.showMessageDialog(rootPane, "Olá " + user.getNome() + ", sua permissão é de " + user.getRole() + ". Seja bem-vindo!");
 
@@ -202,13 +215,18 @@ public class Produtos extends javax.swing.JFrame {
     private void produtos_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_pesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_produtos_pesquisarActionPerformed
-
+    /**
+     * Instancia a classe de cadastro de Podcast, mandando por parametro o user
+     * e produtos para o uso de metodos.
+     */
     private void produtos_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_cadastrarActionPerformed
         Cadastrar cadastrar = new Cadastrar(user, this);
         cadastrar.setVisible(true);
         cadastrar.setLocationRelativeTo(this);
     }//GEN-LAST:event_produtos_cadastrarActionPerformed
-
+    /**
+     * Instancia a classe Main (principal), fechando a atual, gerando um logoff.
+     */
     private void produtos_deslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_deslogarActionPerformed
         // TODO add your handling code here:
         Main main = new Main();
@@ -217,6 +235,10 @@ public class Produtos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_produtos_deslogarActionPerformed
 
+    /**
+     * Salvo a linha escolhida para exclusão com o getSelectedRow, capturo o id
+     * e nome e intancio o DeletarDAO para exclusão do podcast.
+     */
     private void produtos_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_excluirActionPerformed
         // TODO add your handling code here:
         Integer index_podcast = produtos_table.getSelectedRow();
@@ -227,7 +249,10 @@ public class Produtos extends javax.swing.JFrame {
         deletar.setVisible(true);
         deletar.setLocationRelativeTo(this);
     }//GEN-LAST:event_produtos_excluirActionPerformed
-
+    /**
+     * Metodo para limpar a barra de pesquisa e reconfigurar a tabela com todos
+     * podcast.
+     */
     private void produtos_limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_limparActionPerformed
         // TODO add your handling code here:
         produtos_pesquisar.setText("");
@@ -235,13 +260,20 @@ public class Produtos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_produtos_limparActionPerformed
 
+    /**
+     * Pego o nome do podcast da barra de pesquisa e chamo o método passando por
+     * parametro.
+     */
     private void produtos_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtos_buscarActionPerformed
         // TODO add your handling code here:
         String produtoNome = produtos_pesquisar.getText();
         iniciarTabelaUnica(produtoNome);
-
     }//GEN-LAST:event_produtos_buscarActionPerformed
 
+    /**
+     * Metodo que faz o foreach nos podcasts do banco e apresenta na JTable (não
+     * consegui fazer funcionar senão deixando aqui)
+     */
     public void iniciarTabela() {
         DefaultTableModel modelo = (DefaultTableModel) produtos_table.getModel();
         modelo.setRowCount(0);
@@ -268,6 +300,11 @@ public class Produtos extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo que faz o foreach nos podcasts do banco e apresenta na JTable
+     * usando a cláusula WHERE para trazer um resultado específico (não consegui
+     * fazer funcionar senão deixando aqui)
+     */
     public void iniciarTabelaUnica(String produtoNome) {
         DefaultTableModel modelo = (DefaultTableModel) produtos_table.getModel();
         modelo.setRowCount(0);
@@ -325,7 +362,6 @@ public class Produtos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                // ajustar essa merda depois
                 User user = new User("defaultUser", "defaultEmail@example.com");
                 EntityManager em = null;
                 new Produtos(user, em).setVisible(true);

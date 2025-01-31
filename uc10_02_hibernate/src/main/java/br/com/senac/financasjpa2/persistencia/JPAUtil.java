@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 
 public class JPAUtil {
 
-    private static final String PERSISTENCE_UNIT = "Financas-PU";
+    private static final String PERSISTENCE_UNIT = "uc10_02_hibernate";
 
     private static EntityManager em;
     private static EntityManagerFactory fabrica;

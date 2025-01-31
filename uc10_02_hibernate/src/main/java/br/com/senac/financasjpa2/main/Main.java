@@ -1,22 +1,31 @@
-package br.com.senac.financasjpa2.persistencia;
+package br.com.senac.financasjpa2.main;
 
-import br.com.senac.financasjpa2.entities.User;
+import br.com.senac.financasjpa2.persistencia.LoginDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
+/**
+ * Classe principal responsável por direcionar o login do usuário
+ *
+ * @author Davi Rodeghiero Souza
+ */
 public class Main extends javax.swing.JFrame {
 
     private EntityManagerFactory emf;
     private EntityManager em;
 
+    /**
+     * Classe responsável por atualizar as informações dos filmes selecionados.
+     *
+     * Executa a acessibilidade, conecta ao arquivo persistence.xml
+     */
     public Main() {
         initComponents();
         gerarAcessibilidade();
-        emf = Persistence.createEntityManagerFactory("Financas-PU");
+        emf = Persistence.createEntityManagerFactory("uc10_02_hibernate");
         em = emf.createEntityManager();
     }
 
@@ -64,15 +73,14 @@ public class Main extends javax.swing.JFrame {
                 .addGap(220, 220, 220))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(150, 150, 150)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(main_login_button, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(main_login, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addComponent(jLabel2)
-                        .addComponent(main_senha))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(main_login_button, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(main_senha)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,37 +116,25 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Verifica se os campos estão vazios e chama o método de executar login, do
+     * LoginDAO.
+     */
     private void main_login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_main_login_buttonActionPerformed
 
         if (main_login.getText().isEmpty() || main_senha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Login e Senha não podem ser um campo vazio!");
         } else {
+            String login = main_login.getText();
+            String senha = new String(main_senha.getPassword());
 
-            try {
-
-                String login = main_login.getText();
-                String senha = new String(main_senha.getPassword());
-
-                Query consulta = em.createQuery("SELECT u FROM User u JOIN FETCH u.role WHERE u.nome = :nome AND u.senha = :senha");
-
-                consulta.setParameter("nome", login);
-                consulta.setParameter("senha", senha);
-
-                User userLog = (User) consulta.getSingleResult();
-
-                JOptionPane.showMessageDialog(rootPane, "Login realizado");
-
-                Produtos produtos = new Produtos(userLog, em);
-                produtos.setVisible(true);
-                produtos.setLocationRelativeTo(this);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "As credenciais não estão corretas !");
-            }
-
+            LoginDAO LG = new LoginDAO(this, em);
+            LG.executeLogin(login, senha);
         }
     }//GEN-LAST:event_main_login_buttonActionPerformed
-
+    /**
+     * Gera acessibilidade para facilitar o login com alt + enter.
+     */
     public void gerarAcessibilidade() {
         main_login_button.setMnemonic(KeyEvent.VK_ENTER);
     }

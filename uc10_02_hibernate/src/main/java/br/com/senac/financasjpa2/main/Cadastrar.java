@@ -1,7 +1,8 @@
-package br.com.senac.financasjpa2.persistencia;
+package br.com.senac.financasjpa2.main;
 
 import br.com.senac.financasjpa2.entities.Podcast;
 import br.com.senac.financasjpa2.entities.User;
+import br.com.senac.financasjpa2.persistencia.PodcastDAO;
 import javax.swing.JOptionPane;
 import java.time.LocalTime;
 import java.sql.Time;
@@ -11,6 +12,12 @@ public class Cadastrar extends javax.swing.JFrame {
     private User user;
     private Produtos produtos;
 
+    /**
+     * Recebo a classe de User e a classe Produtos.
+     *
+     * @param user recebe a classe User
+     * @param produtos recebe a classe Produtos
+     */
     public Cadastrar(User user, Produtos produtos) {
         this.produtos = produtos;
         this.user = user;
@@ -173,9 +180,12 @@ public class Cadastrar extends javax.swing.JFrame {
     private void cadastrar_listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_listagemActionPerformed
         // TODO add your handling code here:
         this.dispose();
-
     }//GEN-LAST:event_cadastrar_listagemActionPerformed
-
+    /**
+     * Recebo os campos para inserir um novo podcast. Trata os dados, instancio
+     * o podcastDAO passando os valores para o Insert, atualizo a tabela, limpo
+     * os campos.
+     */
     private void cadastrar_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_cadastrarActionPerformed
         // TODO add your handling code here:
         if (cadastrar_produtor.getText().isEmpty() || cadastrar_nomeEp.getText().isEmpty() || cadastrar_numEp.getText().isEmpty() || cadastra_duracaoEp.getText().isEmpty() || cadastrar_URL.getText().isEmpty()) {
@@ -185,7 +195,6 @@ public class Cadastrar extends javax.swing.JFrame {
         try {
             int numeroEp = Integer.parseInt(cadastrar_numEp.getText());
 
-            // testando a formatação para date
             String duracaoEp = cadastra_duracaoEp.getText();
 
             LocalTime localTime = LocalTime.parse(duracaoEp);

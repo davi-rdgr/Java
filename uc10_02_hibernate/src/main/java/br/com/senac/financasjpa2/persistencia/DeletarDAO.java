@@ -2,6 +2,8 @@ package br.com.senac.financasjpa2.persistencia;
 
 import br.com.senac.financasjpa2.entities.Podcast;
 import br.com.senac.financasjpa2.entities.User;
+import br.com.senac.financasjpa2.main.Produtos;
+import br.com.senac.financasjpa2.persistencia.JPAUtil;
 import jakarta.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
@@ -12,6 +14,13 @@ public class DeletarDAO extends javax.swing.JFrame {
     private String podname;
     private Produtos produtos;
 
+    /**
+     *
+     * @param index recebe o index do podcast a ser deletado na JTable
+     * @param user recebe a classe User
+     * @param podname recebe o nome do podcast
+     * @param produtos recebe a classe Produtos
+     */
     public DeletarDAO(Integer index, User user, String podname, Produtos produtos) {
         this.index = index;
         this.user = user;
@@ -94,12 +103,19 @@ public class DeletarDAO extends javax.swing.JFrame {
     private void deletar_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletar_voltarActionPerformed
         this.dispose();
     }//GEN-LAST:event_deletar_voltarActionPerformed
-
+    /**
+     * Botão que pede para confirmar a exclusão. Chama o método de exclusão e
+     * passa por parametro o id do index da linha na JTable
+     */
     private void deletar_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletar_excluirActionPerformed
         // TODO add your handling code here:
         excluir(index);
     }//GEN-LAST:event_deletar_excluirActionPerformed
-
+    /**
+     * Método de exclusão do podcast
+     *
+     * @param id id do podcast
+     */
     public void excluir(int id) {
         EntityManager em = JPAUtil.getEntityManager();
 
